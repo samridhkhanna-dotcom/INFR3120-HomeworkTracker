@@ -1,1 +1,64 @@
-<!-- edit -->
+<%- include("partials/header") %>
+
+<h2 class="mb-4">Edit Homework</h2>
+
+<form action="/homework/edit/<%= homework._id %>" method="POST" class="card p-4 shadow-sm">
+
+    <div class="mb-3">
+        <label class="form-label">Homework Title</label>
+        <input 
+            type="text" 
+            name="title" 
+            class="form-control" 
+            value="<%= homework.title %>" 
+            required
+        >
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Course</label>
+        <input 
+            type="text" 
+            name="course" 
+            class="form-control" 
+            value="<%= homework.course %>" 
+            required
+        >
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Due Date</label>
+        <input 
+            type="date" 
+            name="dueDate" 
+            class="form-control" 
+            value="<%= homework.dueDate.toISOString().split('T')[0] %>" 
+            required
+        >
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Status</label>
+        <select name="status" class="form-select">
+            <option value="Not Started" <%= homework.status === "Not Started" ? "selected" : "" %>>Not Started</option>
+            <option value="In Progress" <%= homework.status === "In Progress" ? "selected" : "" %>>In Progress</option>
+            <option value="Completed" <%= homework.status === "Completed" ? "selected" : "" %>>Completed</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea 
+            name="description" 
+            class="form-control" 
+            rows="4"
+        ><%= homework.description %></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Homework</button>
+
+    <a href="/homework" class="btn btn-secondary ms-2">Cancel</a>
+
+</form>
+
+<%- include("partials/footer") %>
