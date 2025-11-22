@@ -1,1 +1,1 @@
-# INFR3120-HomeworkTracker
+# Homework Tracker
